@@ -13,6 +13,7 @@
 
 html, body {
     margin: 0;
+    padding: 0;
     width: 100%;
     height: 100%;
     overflow: hidden;
@@ -24,7 +25,8 @@ html, body {
 #screen {
     width: 100vw;
     height: 100vh;
-    padding: 35px 45px 25px;
+    height: 100dvh;
+    padding: 30px 40px 20px;
     display: flex;
     flex-direction: column;
     position: relative;
@@ -32,7 +34,7 @@ html, body {
     background: #090b12 center/cover no-repeat;
 }
 
-#screen:before {
+#screen::before {
     content: "";
     position: absolute;
     inset: 0;
@@ -52,7 +54,7 @@ header {
 }
 
 .rush-logo {
-    font-size: 64px;
+    font-size: 100px !important;
     font-weight: 900;
     letter-spacing: 5px;
 }
@@ -61,37 +63,41 @@ header {
     text-align: right;
 }
 
-.clock {
-    font-size: 110px;
-    font-weight: 900;
-    line-height: 1;
+.clockblock .clock {
+    font-size: clamp(110px, 9vw, 180px) !important;
+    font-weight: 900 !important;
+    line-height: 1.05 !important;
     font-variant-numeric: tabular-nums;
 }
 
-.date {
-    font-size: 42px;
-    font-weight: 700;
-    margin-top: 12px;
-    color: #ffffff;
+.clockblock .date {
+    font-size: clamp(38px, 3vw, 60px) !important;
+    font-weight: 800 !important;
+    margin-top: 10px;
+    color: white;
 }
 
-/* VELKOMST */
+/* VELKOMSTTEKST */
 
 .welcome {
     text-align: center;
-    font-size: 110px;
-    font-weight: 900;
-    margin: 25px 0 8px;
-    text-shadow: 0 4px 15px #000b;
+    font-size: clamp(90px, 8vw, 160px) !important;
+    font-weight: 900 !important;
+    line-height: 1.05;
+    white-space: nowrap;
+    margin: 25px 0 15px !important;
+    text-shadow: 0 5px 18px #000c;
 }
+
+/* UNDERTITTEL */
 
 .subhead {
     text-align: center;
-    font-size: 32px;
+    font-size: 48px !important;
     font-weight: 900;
     letter-spacing: 5px;
     margin: 0 0 25px;
-    color: #ffffff;
+    color: white;
 }
 
 /* ARMBÅNDSBOKSER */
@@ -118,43 +124,82 @@ header {
     overflow: hidden;
 }
 
-.name {
-    font-size: 48px;
+.card .name {
+    font-size: 75px !important;
     font-weight: 900;
 }
 
-.status {
-    font-size: 26px;
+.card .status {
+    font-size: 34px !important;
     font-weight: 900;
     letter-spacing: 3px;
     margin-bottom: 18px;
 }
 
-.remaining {
-    font-size: 65px;
+.card .remaining {
+    font-size: 100px !important;
     font-weight: 900;
     white-space: nowrap;
     font-variant-numeric: tabular-nums;
 }
 
-.detail {
-    font-size: 25px;
+.card .detail {
+    font-size: 34px !important;
     font-weight: 800;
     margin-top: 18px;
 }
 
 /* FARGER */
 
-.pink { background: #ed168f; color: white; }
-.red { background: #ed3030; color: white; }
-.silver { background: #c0c0c0; color: #191919; }
-.green { background: #22b95c; color: #101010; }
-.orange { background: #ff8c20; color: #191919; }
-.blue { background: #1688ff; color: white; }
-.yellow { background: #ffe333; color: #191919; }
-.purple { background: #a64dff; color: white; }
-.black { background: #242424; color: white; }
-.white { background: #f1f1f1; color: #191919; }
+.pink {
+    background: #ed168f;
+    color: white;
+}
+
+.red {
+    background: #ed3030;
+    color: white;
+}
+
+.silver {
+    background: #c0c0c0;
+    color: #191919;
+}
+
+.green {
+    background: #22b95c;
+    color: #101010;
+}
+
+.orange {
+    background: #ff8c20;
+    color: #191919;
+}
+
+.blue {
+    background: #1688ff;
+    color: white;
+}
+
+.yellow {
+    background: #ffe333;
+    color: #191919;
+}
+
+.purple {
+    background: #a64dff;
+    color: white;
+}
+
+.black {
+    background: #242424;
+    color: white;
+}
+
+.white {
+    background: #f1f1f1;
+    color: #191919;
+}
 
 .done {
     background: #202127f2;
@@ -162,15 +207,15 @@ header {
     border: 3px solid #ffffff99;
 }
 
-/* BUNN */
+/* BUNNTEKST */
 
 footer {
     text-align: center;
     padding-top: 18px;
-    font-size: 22px;
+    font-size: 28px !important;
     font-weight: 900;
     letter-spacing: 7px;
-    color: #ffffff;
+    color: white;
     flex-shrink: 0;
 }
 </style>
@@ -180,22 +225,22 @@ footer {
 
 <main id="screen">
 
-<header>
-    <div class="rush-logo">RUSH</div>
+    <header>
+        <div class="rush-logo">RUSH</div>
 
-    <div class="clockblock">
-        <div class="clock" id="clock">00:00:00</div>
-        <div class="date" id="date"></div>
-    </div>
-</header>
+        <div class="clockblock">
+            <div class="clock" id="clock">00:00:00</div>
+            <div class="date" id="date"></div>
+        </div>
+    </header>
 
-<h1 class="welcome">VELKOMMEN TIL OSS!</h1>
+    <h1 class="welcome">VELKOMMEN TIL OSS!</h1>
 
-<p class="subhead">DAGENS ARMBÅND</p>
+    <p class="subhead">DAGENS ARMBÅND</p>
 
-<section class="cards" id="cards"></section>
+    <section class="cards" id="cards"></section>
 
-<footer>RUSH TRAMPOLINEPARK</footer>
+    <footer>RUSH TRAMPOLINEPARK</footer>
 
 </main>
 
@@ -216,33 +261,34 @@ const colors = [
 
 const firstFinish = 630;
 const step = 30;
+
 const screen = document.getElementById("screen");
 
 function parts(n) {
     return Object.fromEntries(
         new Intl.DateTimeFormat("en-GB", {
-            timeZone:"Europe/Oslo",
-            hour:"2-digit",
-            minute:"2-digit",
-            second:"2-digit",
-            hourCycle:"h23"
-        }).formatToParts(n).map(x => [x.type,x.value])
+            timeZone: "Europe/Oslo",
+            hour: "2-digit",
+            minute: "2-digit",
+            second: "2-digit",
+            hourCycle: "h23"
+        }).formatToParts(n).map(x => [x.type, x.value])
     );
 }
 
 function weekday(n) {
     return new Intl.DateTimeFormat("en-US", {
-        timeZone:"Europe/Oslo",
-        weekday:"short"
+        timeZone: "Europe/Oslo",
+        weekday: "short"
     }).format(n);
 }
 
 function fmt(s) {
-    s = Math.max(0,Math.floor(s));
+    s = Math.max(0, Math.floor(s));
 
-    let h = Math.floor(s/3600);
-    let m = Math.floor(s%3600/60);
-    let q = s%60;
+    let h = Math.floor(s / 3600);
+    let m = Math.floor(s % 3600 / 60);
+    let q = s % 60;
 
     return h
         ? `${h}t ${String(m).padStart(2,"0")}m`
@@ -253,37 +299,45 @@ function render() {
 
     const now = new Date();
     const p = parts(now);
-    const minute = +p.hour*60 + +p.minute;
+    const minute = +p.hour * 60 + +p.minute;
     const wd = weekday(now);
+
+    /* KLOKKE */
 
     document.getElementById("clock").textContent =
         `${p.hour}:${p.minute}:${p.second}`;
 
+    /* DATO */
+
     document.getElementById("date").textContent =
         new Intl.DateTimeFormat("nb-NO", {
-            timeZone:"Europe/Oslo",
-            weekday:"long",
-            day:"numeric",
-            month:"long"
+            timeZone: "Europe/Oslo",
+            weekday: "long",
+            day: "numeric",
+            month: "long"
         }).format(now);
 
-    /* BAKGRUNN */
+    /* BAKGRUNNSBILDER */
 
-    if ((wd==="Sat" || wd==="Sun") && minute>=510 && minute<660) {
+    if ((wd === "Sat" || wd === "Sun") &&
+        minute >= 510 && minute < 660) {
+
         screen.style.backgroundImage =
-            "url('https://raw.githubusercontent.com/Joachim-dev-bit/rush-wristband-display/main/Rush-helg.jpg')";
-    }
-    else if (["Mon","Tue","Wed","Thu","Fri"].includes(wd)) {
+        "url('https://raw.githubusercontent.com/Joachim-dev-bit/rush-wristband-display/main/Rush-helg.jpg')";
+
+    } else if (["Mon","Tue","Wed","Thu","Fri"].includes(wd)) {
+
         screen.style.backgroundImage =
-            "url('https://raw.githubusercontent.com/Joachim-dev-bit/rush-wristband-display/main/Rush-ukedag.jpg')";
-    }
-    else {
+        "url('https://raw.githubusercontent.com/Joachim-dev-bit/rush-wristband-display/main/Rush-ukedag.jpg')";
+
+    } else {
+
         screen.style.backgroundImage = "none";
     }
 
-    /* BEREGNING AV ARMBÅND */
+    /* BEREGNING */
 
-    const k = Math.floor((minute-firstFinish)/step);
+    const k = Math.floor((minute - firstFinish) / step);
 
     let upcoming = [];
     let last = null;
@@ -291,30 +345,34 @@ function render() {
 
     if (minute < firstFinish) {
 
-        for (let i=0;i<4;i++) {
+        for (let i = 0; i < 4; i++) {
+
             upcoming.push({
                 i,
-                finish:firstFinish+i*step,
-                seconds:(firstFinish+i*step-minute)*60-(+p.second)
+                finish: firstFinish + i * step,
+                seconds:
+                    (firstFinish + i * step - minute) * 60 - (+p.second)
             });
         }
 
     } else {
 
         finished =
-            (((minute-firstFinish)-k*step)*60+(+p.second)) < 120;
+            (((minute - firstFinish) - k * step) * 60 + (+p.second)) < 120;
 
-        last = ((k%colors.length)+colors.length)%colors.length;
+        last = ((k % colors.length) + colors.length) % colors.length;
 
         for (
-            let i=k+1;
-            i<k+1+(finished?3:4);
+            let i = k + 1;
+            i < k + 1 + (finished ? 3 : 4);
             i++
         ) {
+
             upcoming.push({
                 i,
-                finish:firstFinish+i*step,
-                seconds:(firstFinish+i*step-minute)*60-(+p.second)
+                finish: firstFinish + i * step,
+                seconds:
+                    (firstFinish + i * step - minute) * 60 - (+p.second)
             });
         }
     }
@@ -324,7 +382,7 @@ function render() {
     const cards = document.getElementById("cards");
     cards.innerHTML = "";
 
-    if (finished && last!==null) {
+    if (finished && last !== null) {
 
         const d = colors[last];
         const el = document.createElement("article");
@@ -345,13 +403,15 @@ function render() {
 
     upcoming.forEach(it => {
 
-        const c = colors[((it.i%colors.length)+colors.length)%colors.length];
+        const c = colors[
+            ((it.i % colors.length) + colors.length) % colors.length
+        ];
 
-        const end = ((it.finish%1440)+1440)%1440;
+        const end = ((it.finish % 1440) + 1440) % 1440;
 
         const t =
-            `${String(Math.floor(end/60)).padStart(2,"0")}:`+
-            `${String(end%60).padStart(2,"0")}`;
+            `${String(Math.floor(end / 60)).padStart(2,"0")}:` +
+            `${String(end % 60).padStart(2,"0")}`;
 
         const el = document.createElement("article");
 
@@ -371,7 +431,7 @@ function render() {
 }
 
 render();
-setInterval(render,1000);
+setInterval(render, 1000);
 
 </script>
 
