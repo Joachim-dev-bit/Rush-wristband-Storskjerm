@@ -41,21 +41,22 @@ max-height:8vh;object-fit:contain
 .clockblock{text-align:right}
 
 .clock{
-font-size:clamp(36px,4vw,64px);
+font-size:72px !important;
 font-weight:900;
 font-variant-numeric:tabular-nums
 }
 
 .date{
-font-size:clamp(18px,1.8vw,26px);
-margin-top:7px;color:#e0e5ef;
+font-size:32px !important;
+margin-top:10px;
+color:#e0e5ef;
 font-weight:700
 }
 
 .welcome{
 text-align:center;
-font-size:clamp(40px,4.8vw,76px);
-margin:1.5vh 0 .8vh;
+font-size:90px !important;
+margin:2vh 0 1vh;
 font-weight:900;
 text-shadow:0 2px 10px #000b
 }
@@ -125,15 +126,11 @@ font-weight:900;letter-spacing:.16em;color:#e0e5ef
 .status{font-size:clamp(8px,1.5vw,12px);margin-bottom:6px}
 .remaining{font-size:clamp(13px,3vw,23px)}
 .detail{font-size:clamp(8px,1.5vw,12px);margin-top:6px}
-.welcome{font-size:clamp(30px,5vw,48px)}
-.clock{font-size:clamp(32px,5vw,48px)}
-.date{font-size:clamp(16px,2.5vw,22px)}
 }
 
 @media(max-height:520px){
 #screen{padding:7px 12px}
 .logo{max-height:6vh}
-.welcome{margin:5px}
 .subhead{margin:0 0 5px}
 .card{height:55vh;padding:10px}
 footer{padding-top:3px}
@@ -143,6 +140,7 @@ footer{padding-top:3px}
 
 <body>
 <main id="screen">
+
 <header>
 <div style="font-size:clamp(25px,3vw,44px);font-weight:900;letter-spacing:.04em">RUSH</div>
 <div class="clockblock">
@@ -156,6 +154,7 @@ footer{padding-top:3px}
 
 <section class="cards" id="cards"></section>
 <footer>RUSH TRAMPOLINEPARK</footer>
+
 </main>
 
 <script>
